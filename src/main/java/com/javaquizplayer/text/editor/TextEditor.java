@@ -2,6 +2,7 @@ package com.javaquizplayer.text.editor;
 
 //Importierte Bibliotheken
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Insets;
 import java.awt.FlowLayout;
@@ -18,6 +19,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -27,6 +29,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
+import javax.swing.JTextField;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -59,8 +62,12 @@ import javax.swing.text.StyledEditorKit.FontFamilyAction;
 
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.undo.UndoManager;
+
+
 import javax.swing.event.UndoableEditListener;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.CaretListener;
@@ -222,43 +229,59 @@ public class TextEditor {
 			new NumbersActionListener(NumbersActionType.REMOVE));
 		
 		
-		//1 Aufbaustufe
+		//1. Aufbaustufe
 		JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		panel1.add(cutButton);
 		panel1.add(copyButton);
 		panel1.add(pasteButton);
-		panel1.add(Box.createHorizontalStrut(50));
+		panel1.add(Box.createHorizontalStrut(45));
 		panel1.add(undoButton);
 		panel1.add(redoButton);
 		
+		//2. Ausbaustufe
+		JPanel titel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel panel = new JPanel();
+        JLabel gruppe1 = new JLabel("Einfügen");
+        JLabel gruppe2 = new JLabel("Schriftart");
+        Font font = new Font("Arial Hebrew", Font.BOLD,10);
+        gruppe1.setFont(font);
+        gruppe2.setFont(font);
+        titel.add(Box.createHorizontalStrut(20));
+        titel.add(gruppe1);
+        titel.add(Box.createHorizontalStrut(240));
+        titel.add(gruppe2);
+		
 		JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		panel2.add(boldButton);
-		panel2.add(italicButton);
-		panel2.add(underlineButton);
-		panel2.add(Box.createHorizontalStrut(30));
-		panel2.add(colorButton);
-		panel2.add(Box.createHorizontalStrut(150));
+		panel2.add(insertPictureButton);
+		panel2.add(deletePictureButton);
+		panel2.add(Box.createHorizontalStrut(75));
 		panel2.add(textAlignComboBox__);
 		panel2.add(fontSizeComboBox__);
-		panel2.add(fontFamilyComboBox__);		
+		panel2.add(fontFamilyComboBox__);	
 		
 		JPanel panel3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		panel3.add(insertPictureButton);
-		panel3.add(deletePictureButton);
-		panel3.add(Box.createHorizontalStrut(15));
 		panel3.add(bulletInsertButton);
 		panel3.add(bulletRemoveButton);
-		panel3.add(Box.createHorizontalStrut(15));
-		panel3.add(numbersInsertButton);
-		panel3.add(numbersRemoveButton);
+		panel3.add(Box.createHorizontalStrut(68));
+		panel3.add(boldButton);
+		panel3.add(italicButton);
+		panel3.add(underlineButton);
 		
+		JPanel panel4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panel4.add(numbersInsertButton);
+		panel4.add(numbersRemoveButton);
+		panel4.add(Box.createHorizontalStrut(42));
+		panel4.add(colorButton);
+
 		JPanel toolBarPanel = new JPanel();
 		toolBarPanel.setLayout(new BoxLayout(toolBarPanel, BoxLayout.PAGE_AXIS));
 		
 		//1. Ausbaustufe
 		toolBarPanel.add(panel1);
+		toolBarPanel.add(titel);
 		toolBarPanel.add(panel2);
 		toolBarPanel.add(panel3);
+		toolBarPanel.add(panel4);
 
 		frame__.add(toolBarPanel, BorderLayout.NORTH);
 		frame__.add(editorScrollPane, BorderLayout.CENTER);
