@@ -1,5 +1,6 @@
 package com.javaquizplayer.text.editor;
 
+//Importierte Bibliotheken
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Insets;
@@ -32,6 +33,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingConstants;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.UIManager;
 
@@ -79,13 +81,7 @@ import java.io.ObjectOutputStream;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-/*
- * A text editor program with basic edit and format functions.
- * Created by
- * @link http://www.javaquizplayer.com/examples/text-editor-using-java-example.html
- */
 public class TextEditor {
-
 	
 	private JFrame frame__;
 	private JTextPane editor__;
@@ -225,40 +221,44 @@ public class TextEditor {
 		numbersRemoveButton.addActionListener(
 			new NumbersActionListener(NumbersActionType.REMOVE));
 		
+		
+		//1 Aufbaustufe
 		JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		panel1.add(cutButton);
 		panel1.add(copyButton);
 		panel1.add(pasteButton);
-		panel1.add(new JSeparator(SwingConstants.VERTICAL));
-		panel1.add(boldButton);
-		panel1.add(italicButton);
-		panel1.add(underlineButton);
-		panel1.add(new JSeparator(SwingConstants.VERTICAL));	
-		panel1.add(colorButton);
-		panel1.add(new JSeparator(SwingConstants.VERTICAL));
-		panel1.add(textAlignComboBox__);
-		panel1.add(new JSeparator(SwingConstants.VERTICAL));
-		panel1.add(fontSizeComboBox__);
-		panel1.add(new JSeparator(SwingConstants.VERTICAL));
-		panel1.add(fontFamilyComboBox__);		
+		panel1.add(Box.createHorizontalStrut(50));
+		panel1.add(undoButton);
+		panel1.add(redoButton);
 		
 		JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		panel2.add(insertPictureButton);
-		panel2.add(deletePictureButton);
-		panel2.add(new JSeparator(SwingConstants.VERTICAL));
-		panel2.add(bulletInsertButton);
-		panel2.add(bulletRemoveButton);
-		panel2.add(new JSeparator(SwingConstants.VERTICAL));
-		panel2.add(numbersInsertButton);
-		panel2.add(numbersRemoveButton);
-		panel2.add(new JSeparator(SwingConstants.VERTICAL));
-		panel2.add(undoButton);
-		panel2.add(redoButton);
+		panel2.add(boldButton);
+		panel2.add(italicButton);
+		panel2.add(underlineButton);
+		panel2.add(Box.createHorizontalStrut(30));
+		panel2.add(colorButton);
+		panel2.add(Box.createHorizontalStrut(150));
+		panel2.add(textAlignComboBox__);
+		panel2.add(fontSizeComboBox__);
+		panel2.add(fontFamilyComboBox__);		
+		
+		JPanel panel3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panel3.add(insertPictureButton);
+		panel3.add(deletePictureButton);
+		panel3.add(Box.createHorizontalStrut(15));
+		panel3.add(bulletInsertButton);
+		panel3.add(bulletRemoveButton);
+		panel3.add(Box.createHorizontalStrut(15));
+		panel3.add(numbersInsertButton);
+		panel3.add(numbersRemoveButton);
 		
 		JPanel toolBarPanel = new JPanel();
 		toolBarPanel.setLayout(new BoxLayout(toolBarPanel, BoxLayout.PAGE_AXIS));
+		
+		//1. Ausbaustufe
 		toolBarPanel.add(panel1);
 		toolBarPanel.add(panel2);
+		toolBarPanel.add(panel3);
 
 		frame__.add(toolBarPanel, BorderLayout.NORTH);
 		frame__.add(editorScrollPane, BorderLayout.CENTER);
