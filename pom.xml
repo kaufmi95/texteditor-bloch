@@ -5,8 +5,8 @@
     <artifactId>swing-samples</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>swing-text-editor</artifactId>
-  <name>swing-text-editor</name>
+  <artifactId>swing-text-editor-bloch</artifactId>
+  <name>swing-text-editor-bloch</name>
   <description>Text Editor for formatted Text</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
